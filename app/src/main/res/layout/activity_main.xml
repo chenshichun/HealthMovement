@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backguound"
+    tools:context="movement.health.csc.healthmovement.activity.MainActivity">
+    <RelativeLayout
+        android:id="@+id/main_header_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_header_rl_height"
+        android:background="@color/colorPrimaryDark"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="@color/write"
+            android:textSize="@dimen/main_header_rl_text_size"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/viewpage_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_exercising"
+            android:textColor="@color/write"
+            android:textSize="@dimen/viewpage_title_text_size" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/viewpage_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/viewpage_margin_top" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/start_exercisePoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/iphone_dian_light_white" />
+
+            <ImageView
+                android:id="@+id/customize_exercisePoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/customize_exercise_point_margin_left"
+                android:background="@drawable/iphone_dian_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/remind_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/remind_text_margin_top"
+            android:gravity="center"
+            android:paddingLeft="@dimen/remind_text_padding_left_or_right"
+            android:paddingRight="@dimen/remind_text_padding_left_or_right"
+            android:text="@string/remind"
+            android:textSize="@dimen/remind_text_size" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_bottomRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/main_bottom__rl_padding"
+        >
+
+        <ImageButton
+            android:id="@+id/setting_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_new_exercise"
+            android:layout_alignParentLeft="true"
+            />
+
+        <ImageButton
+            android:id="@+id/choose_practiceIb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_new_exercise"
+            android:layout_centerInParent="true"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_new_exercise"
+            android:layout_alignParentRight="true"
+
+            />
+    </RelativeLayout>
+</RelativeLayout>

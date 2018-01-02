@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/new_exercising_ll"
+        style="@style/StartExercisingLl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/start_exercising_rl_height">
+
+            <ImageView
+                android:id="@+id/add_new_exercise_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/add_new_exercise"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/add_new_exercise_iv_margin_left"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/new_exercising"
+                android:textColor="@color/write"
+                android:textSize="@dimen/name_tv_text_size"
+                android:layout_toRightOf="@id/add_new_exercise_iv"
+                android:layout_marginLeft="@dimen/add_new_exercise_tv_margin_left"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

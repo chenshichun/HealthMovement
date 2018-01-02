@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sports_name">
+        <item>俯卧撑</item>
+        <item>仰卧起坐</item>
+        <item>弓箭步</item>
+        <item>深蹲</item>
+        <item>提膝</item>
+        <item>原地登山</item>
+        <item>抬腿</item>
+        <item>踢腿</item>
+        <item>仰卧桥式挺臀</item>
+        <item>低姿跳跃</item>
+        <item>单车式卷腹</item>
+        <item>側卧提臀</item>
+        <item>刀切卷腹</item>
+        <item>驴踢</item>
+        <item>超人起飞</item>
+        <item>蹲跳</item>
+        <item>开合跳</item>
+        <item>波比</item>
+    </string-array>
+    
+    <string-array name="practice_difficulty">
+        <item>自定义</item>
+        <item>快速</item>
+        <item>每天</item>
+        <item>困难</item>
+        <item>苦修</item>
+    </string-array>
+
+    <string-array name="num_text">
+        <item>"?"</item>
+        <item>6</item>
+        <item>12</item>
+        <item>18</item>
+        <item>20</item>
+    </string-array>
+
+    <integer-array name="kung_fu_pic">
+        <item>@drawable/kung_fu_0</item>
+        <item>@drawable/kung_fu_1</item>
+        <item>@drawable/kung_fu_2</item>
+        <item>@drawable/kung_fu_3</item>
+        <item>@drawable/kung_fu_4</item>
+        <item>@drawable/kung_fu_5</item>
+        <item>@drawable/kung_fu_6</item>
+    </integer-array>
+
+    <integer-array name="exercising_pic">
+        <item>@drawable/kung_fu_0</item>
+        <item>@drawable/kung_fu_1</item>
+        <item>@drawable/kung_fu_2</item>
+        <item>@drawable/kung_fu_3</item>
+        <item>@drawable/kung_fu_4</item>
+        <item>@drawable/kung_fu_5</item>
+        <item>@drawable/kung_fu_6</item>
+        <item>@drawable/kung_fu_0</item>
+        <item>@drawable/kung_fu_1</item>
+        <item>@drawable/kung_fu_2</item>
+        <item>@drawable/kung_fu_3</item>
+        <item>@drawable/kung_fu_4</item>
+        <item>@drawable/kung_fu_5</item>
+        <item>@drawable/kung_fu_6</item>
+        <item>@drawable/kung_fu_3</item>
+        <item>@drawable/kung_fu_4</item>
+        <item>@drawable/kung_fu_5</item>
+        <item>@drawable/kung_fu_6</item>
+    </integer-array>
+
+    <array name="color_background">
+        <item>#FF704C</item>
+        <item>#99C05D</item>
+        <item>#3F91CC</item>
+        <item>#CE4C4B</item>
+        <item>#D478B9</item>
+        <item>#373737</item>
+    </array>
+
+    <array name="color_background_deep">
+        <item>#E66544</item>
+        <item>#8AAD55</item>
+        <item>#3883B7</item>
+        <item>#BA4444</item>
+        <item>#BF6CA7</item>
+        <item>#313131</item>
+    </array>
+
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_setting_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backguound"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/setting_header_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/setting_header_rl_padding"
+        android:background="@color/colorPrimaryDark"
+        >
+    <ImageButton
+        android:id="@+id/ic_cancel_ib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_cancel"
+        />
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/main_header_rl_text_size"
+         android:text="@string/settings"
+         android:textColor="@color/write"
+         android:layout_centerInParent="true"
+         />
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroupID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/radioGroupID_margin_top"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/radioGroupID_padding_top_or_bottom"
+        android:paddingLeft="@dimen/radioGroupID_padding_left_or_right"
+        android:paddingRight="@dimen/radioGroupID_padding_left_or_right"
+        android:paddingTop="@dimen/radioGroupID_padding_top_or_bottom">
+
+        <RadioButton
+            android:id="@+id/orangeGroupID"
+            style="@style/GroupIDStyle"/>
+
+        <RadioButton
+            android:id="@+id/greenGroupID"
+            style="@style/GroupIDStyle" />
+
+        <RadioButton
+            android:id="@+id/blueGroupID"
+            style="@style/GroupIDStyle" />
+
+        <RadioButton
+            android:id="@+id/redGroupID"
+            style="@style/GroupIDStyle" />
+
+        <RadioButton
+            android:id="@+id/pinkGroupID"
+            style="@style/GroupIDStyle" />
+
+        <RadioButton
+            android:id="@+id/blackGroupID"
+            style="@style/GroupIDStyle" />
+    </RadioGroup>
+</LinearLayout>

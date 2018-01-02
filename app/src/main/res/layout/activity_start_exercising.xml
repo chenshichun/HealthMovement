@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/start_exercise_header_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/start_exercise_header_rl_height"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/ic_cancel_ib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ic_cancel_ib_margin_left"
+            android:background="@drawable/ic_cancel" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/StartExerciseHeaderRlCountTextStyle"
+                    android:text="5" />
+
+                <TextView
+                    style="@style/StartExerciseHeaderRlCountTextStyle"
+                    android:text="/" />
+
+                <TextView
+                    style="@style/StartExerciseHeaderRlCountTextStyle"
+                    android:text="20" />
+            </LinearLayout>
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/h_write"
+                ></Chronometer>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <movement.health.csc.healthmovement.view.CircleProgressView
+        android:id="@+id/circle_progress_view"
+        android:layout_width="@dimen/circle_progress_view_width_height"
+        android:layout_height="@dimen/circle_progress_view_width_height"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/kungfu_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/countdown_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/write"
+        android:textSize="@dimen/countdown_num_text_size" />
+
+    <movement.health.csc.healthmovement.view.GalleryView
+        android:id="@+id/mygallery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mygallery_height"
+        android:layout_centerInParent="true"
+        android:spacing="@dimen/mygallery_spacing"
+        android:unselectedAlpha="1.2"
+        android:visibility="gone" />
+
+    <movement.health.csc.healthmovement.view.EcoGallery
+        android:id="@+id/eco_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/eco_gallery_height"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:selectedScale="1.5"
+        app:unselectedAlpha="0.2" />
+
+    <RelativeLayout
+        android:id="@+id/start_exercise_bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/start_exercise_bottom_rl_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:visibility="gone">
+
+        <GridView
+            android:id="@+id/start_exercise_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="7"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/start_exercise_gridview_spacing" />
+
+    </RelativeLayout>
+</RelativeLayout>

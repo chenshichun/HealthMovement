@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="StartExercisingLl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/start_exercising_rl_height</item>
+        <item name="android:paddingLeft">@dimen/start_exercising_ll_padding_left_or_right</item>
+        <item name="android:paddingRight">@dimen/start_exercising_ll_padding_left_or_right</item>
+    </style>
+
+    <style name="NameTvStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">@dimen/name_tv_margin_left</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/write</item>
+        <item name="android:textSize">@dimen/name_tv_text_size</item>
+    </style>
+
+    <style name="CircleProgressViewStyle">
+        <item name="android:layout_width">@dimen/circle_progressbar_size</item>
+        <item name="android:layout_height">@dimen/circle_progressbar_size</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/circle_progressbar_margin_left</item>
+        <item name="android:visibility">gone</item>
+
+    </style>
+
+    <style name="ExercisingTimeStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/exercising_time_margin_right</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/h_write</item>
+        <item name="android:textSize">@dimen/exercising_time_text_size</item>
+    </style>
+
+
+    <style name="GroupIDStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+
+    <style name="StartExerciseHeaderRlCountTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/write</item>
+        <item name="android:textSize">@dimen/count_num_text_size</item>
+
+    </style>
+
+</resources>

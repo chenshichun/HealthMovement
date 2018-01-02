@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/repid_exercising_ll"
+        style="@style/StartExercisingLl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/start_exercising_rl_height">
+
+            <TextView
+                android:id="@+id/repid_tv"
+                style="@style/NameTvStyle"
+                android:text="@string/repid_exerc" />
+
+            <movement.health.csc.healthmovement.view.CircleProgressView
+                android:id="@+id/repid_circleProgressbar"
+                style="@style/CircleProgressViewStyle"
+                android:layout_toRightOf="@id/repid_tv" />
+
+            <TextView
+                style="@style/ExercisingTimeStyle"
+                android:text="@string/repid_exerc_time" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/every_day_exercising_ll"
+        style="@style/StartExercisingLl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/start_exercising_rl_height">
+
+            <TextView
+                android:id="@+id/every_day_tv"
+                style="@style/NameTvStyle"
+                android:text="@string/every_day_exerc" />
+
+            <movement.health.csc.healthmovement.view.CircleProgressView
+                android:id="@+id/every_day_circleProgressbar"
+                style="@style/CircleProgressViewStyle"
+                android:layout_toRightOf="@id/every_day_tv" />
+
+            <TextView
+                style="@style/ExercisingTimeStyle"
+                android:text="@string/every_day_time" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/difficult_exercising_ll"
+        style="@style/StartExercisingLl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/start_exercising_rl_height">
+
+            <TextView
+                android:id="@+id/difficult_tv"
+                style="@style/NameTvStyle"
+                android:text="@string/difficult_exerc" />
+
+            <movement.health.csc.healthmovement.view.CircleProgressView
+                android:id="@+id/difficult_circleProgressbar"
+                style="@style/CircleProgressViewStyle"
+                android:layout_toRightOf="@id/difficult_tv" />
+
+            <TextView
+                style="@style/ExercisingTimeStyle"
+                android:text="@string/difficult_time" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/penitence_exercising_ll"
+        style="@style/StartExercisingLl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/start_exercising_rl_height">
+
+            <TextView
+                android:id="@+id/penitence_tv"
+                style="@style/NameTvStyle"
+                android:text="@string/penitence_exerc" />
+
+            <movement.health.csc.healthmovement.view.CircleProgressView
+                android:id="@+id/penitence_circleProgressbar"
+                style="@style/CircleProgressViewStyle"
+                android:layout_toRightOf="@id/penitence_tv" />
+
+            <TextView
+                style="@style/ExercisingTimeStyle"
+                android:text="@string/penitence_time" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

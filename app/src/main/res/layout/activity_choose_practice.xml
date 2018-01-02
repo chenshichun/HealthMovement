@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/choose_practice_Rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backguound"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/main_header_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:padding="@dimen/main_header_rl_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/choose_practice_title"
+            android:textColor="@color/write"
+            android:textSize="@dimen/main_header_rl_text_size" />
+
+        <TextView
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/done"
+            android:textColor="@color/write"
+            android:textSize="@dimen/main_header_rl_done_text_size" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/choose_practice_remind"
+        android:textColor="@color/h_write"
+        android:textSize="@dimen/choose_practice_remind_text_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_view_height"
+        android:background="@color/h_black" />
+
+    <GridView
+        android:id="@+id/choose_practice_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:listSelector="@android:color/transparent"
+        android:verticalSpacing="@dimen/choose_practice_gridview_spacing"
+        android:layout_marginTop="@dimen/choose_practice_gridview_margin_top"
+        android:numColumns="3"
+        android:stretchMode="columnWidth" />
+</LinearLayout>
