@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="vertical">
+    android:layout_height="@dimen/start_exercising_rl_height">
 
     <TextView
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/name_tv_text_size"
-        />
+        android:layout_height="@dimen/start_exercising_rl_height"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/name_tv_margin_left"
+        android:gravity="center_vertical"
+        android:textColor="@color/write"
+        android:textSize="@dimen/name_tv_text_size" />
 
     <TextView
         android:id="@+id/item_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/start_exercising_rl_height"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/exercising_time_margin_right"
+        android:gravity="center_vertical"
         android:textColor="@color/h_write"
-        android:textSize="@dimen/exercising_time_text_size"
-        />
-</LinearLayout>
+        android:textSize="@dimen/exercising_time_text_size" />
+</RelativeLayout>

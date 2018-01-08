@@ -4,20 +4,27 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import movement.health.csc.healthmovement.R;
+import movement.health.csc.healthmovement.adapter.ViewPageCustomizeExercisingListViewAdapter;
+import movement.health.csc.healthmovement.sqlite.SQLHelper;
 import movement.health.csc.healthmovement.utils.Utils;
 
 public class MainActivity extends BaseActivity {
@@ -48,6 +55,11 @@ public class MainActivity extends BaseActivity {
     View startExerciseView, customizeExercisingView;
     LinearLayout repidExercisingLl,everyDayExercisingEl,difficultExercisingLl,penitenceExercisingLl;
     LinearLayout newExercisingLl;
+    private ListView mCustomizeExerciseingListView;
+    private ViewPageCustomizeExercisingListViewAdapter mViewPageCustomizeExercisingListViewAdapter;
+
+    private List<Map<String, Object>> titleNameList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +67,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         initData();
+
     }
 
     //数据适配器
@@ -87,7 +100,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData() {
 
-
+        titleNameList = new ArrayList<Map<String, Object>>();
         pageview = new ArrayList<View>();
         pageview.add(startExerciseView);
         pageview.add(customizeExercisingView);
@@ -123,14 +136,37 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+        SQLHelper.createSql(this);
+
+        mViewPageCustomizeExercisingListViewAdapter = new ViewPageCustomizeExercisingListViewAdapter(this, SQLHelper.queryAllCustomizeMessage(this));
+        mCustomizeExerciseingListView.setAdapter(mViewPageCustomizeExercisingListViewAdapter);
     }
 
     @Override
     public void initView() {
 
         LayoutInflater inflater = getLayoutInflater();
-        customizeExercisingView = inflater.inflate(R.layout.viewpage_customize_exercising_foot_view, null);
-        newExercisingLl = ButterKnife.findById(customizeExercisingView,R.id.new_exercising_ll);
+        customizeExercisingView = inflater.inflate(R.layout.viewpage_customize_exercising, null);
+        mCustomizeExerciseingListView = ButterKnife.findById(customizeExercisingView,R.id.customize_exerciseing_list_view);
+        View view = LayoutInflater.from(this).inflate(R.layout.viewpage_customize_exercising_foot_view, null);
+        mCustomizeExerciseingListView.addFooterView(view);
+        mCustomizeExerciseingListView.setAdapter(mViewPageCustomizeExercisingListViewAdapter);
+
+        mCustomizeExerciseingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(DEBUG) Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" ::::::mCustomizeExerciseingListView.getCount():::"+mCustomizeExerciseingListView.getCount());
+                if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::position::::::"+position);
+                TextView itemName = (TextView) view.findViewById(R.id.item_name);
+                Bundle bundle=new Bundle();
+                bundle.putInt("sql_position",position+1);
+                bundle.putInt("list_view_count",mCustomizeExerciseingListView.getCount()-1);
+                bundle.putString("item_name",itemName.getText().toString());
+                startActivity(NewExercisingActivity.class, bundle);
+            }
+        });
+
+        newExercisingLl = ButterKnife.findById(view,R.id.new_exercising_ll);
         newExercisingLl.setOnClickListener(this);
 
         startExerciseView = inflater.inflate(R.layout.viewpage_start_exercising, null);
@@ -143,6 +179,13 @@ public class MainActivity extends BaseActivity {
         difficultExercisingLl.setOnClickListener(this);
         penitenceExercisingLl = ButterKnife.findById(startExerciseView,R.id.penitence_exercising_ll);
         penitenceExercisingLl.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        mViewPageCustomizeExercisingListViewAdapter = new ViewPageCustomizeExercisingListViewAdapter(this, SQLHelper.queryAllCustomizeMessage(this));
+        mCustomizeExerciseingListView.setAdapter(mViewPageCustomizeExercisingListViewAdapter);
     }
 
     @Override
@@ -186,8 +229,18 @@ public class MainActivity extends BaseActivity {
                 startActivity(StartExercisingActivity.class, null);
                 break;
             case R.id.new_exercising_ll:
-                startActivity(NewExercisingActivity.class, null);
+                Bundle bundle=new Bundle();
+                bundle.putInt("sql_position",0);
+                bundle.putInt("list_view_count",mCustomizeExerciseingListView.getCount());
+                bundle.putString("item_name",getResources().getString(R.string.customize_exerc)+mCustomizeExerciseingListView.getCount());
+                startActivity(NewExercisingActivity.class, bundle);
+                if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::::::mCustomizeExerciseingListView.getCount()::"+mCustomizeExerciseingListView.getCount());
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

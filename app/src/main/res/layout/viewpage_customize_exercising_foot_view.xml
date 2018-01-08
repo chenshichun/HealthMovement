@@ -6,7 +6,9 @@
 
     <LinearLayout
         android:id="@+id/new_exercising_ll"
-        style="@style/StartExercisingLl">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/start_exercising_rl_height"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"

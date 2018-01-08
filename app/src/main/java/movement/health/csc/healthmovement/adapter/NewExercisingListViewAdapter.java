@@ -66,8 +66,7 @@ public class NewExercisingListViewAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::::::::"+Integer.parseInt(data.get(position).get(Utils.MAP_PIC_NAME)));
-        viewHolder.itemNum.setText((String) data.get(position).get(Utils.MAP_ID));
+        viewHolder.itemNum.setText(""+(position+1));
         viewHolder.itemPic.setImageResource(itemPic[Integer.parseInt(data.get(position).get(Utils.MAP_PIC_NAME))]);
         viewHolder.itemName.setText(itemNameText[Integer.parseInt(data.get(position).get(Utils.MAP_PIC_NAME))]);
 

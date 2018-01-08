@@ -26,7 +26,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE new_exerciseing_table(_id INTEGER PRIMARY KEY AUTOINCREMENT, pic_name int ,exerciseing_num int)");
+        db.execSQL("CREATE TABLE new_exerciseing_table(_id INTEGER PRIMARY KEY AUTOINCREMENT, pic_name int ,exerciseing_num int,exerciseing_table text)");
+        db.execSQL("CREATE TABLE customize_exerciseing_table(_id INTEGER PRIMARY KEY AUTOINCREMENT, db_customize_name text ,db_customize_time text)");
     }
 
     @Override

@@ -3,9 +3,11 @@ package movement.health.csc.healthmovement.activity;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,8 +23,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +48,8 @@ public class NewExercisingActivity extends BaseActivity {
     RelativeLayout mainHeaderRl;
     @BindView(R.id.new_exercising_cancel)
     TextView newExecrcisingCancel;
+    @BindView(R.id.new_exercising_save)
+    TextView newExecrcisingSave;
     @BindView(R.id.customize_gridview)
     GridView customizeGridView;
     @BindView(R.id.exercising_name_gallery)
@@ -64,7 +70,8 @@ public class NewExercisingActivity extends BaseActivity {
     private String[] itemNameText;
     private ExercisingNameGridViewAdapter mExercisingNameGridViewAdapter;
     private NewExercisingListViewAdapter mNewExercisingListViewAdapter;
-
+    private int tableNum, listCount;
+    private String customizeName;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,9 +106,9 @@ public class NewExercisingActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                SQLHelper.insertSqlite(getApplicationContext(), position, 5);
+                SQLHelper.insertSqlite(getApplicationContext(), position, 5, listCount);
                 mNewExercisingListViewAdapter = new NewExercisingListViewAdapter(getApplicationContext(),
-                        SQLHelper.queryAllMessage(getApplicationContext()));
+                        SQLHelper.queryAllMessage(getApplicationContext(), listCount));
                 newExercisingListView.setAdapter(mNewExercisingListViewAdapter);
                 setListViewHeightBasedOnChildren(newExercisingListView);
             }
@@ -126,11 +133,19 @@ public class NewExercisingActivity extends BaseActivity {
             }
         });
 
-        SQLHelper.createSql(this);
-        mNewExercisingListViewAdapter = new NewExercisingListViewAdapter(getApplicationContext(),
-                SQLHelper.queryAllMessage(getApplicationContext()));
-        newExercisingListView.setAdapter(mNewExercisingListViewAdapter);
-        setListViewHeightBasedOnChildren(newExercisingListView);
+        Bundle bundle = this.getIntent().getExtras();
+        //接收name值
+        tableNum = bundle.getInt("sql_position");
+        listCount = bundle.getInt("list_view_count");
+        customizeName = bundle.getString("item_name");
+        if (tableNum == 0) {
+        } else {
+            mNewExercisingListViewAdapter = new NewExercisingListViewAdapter(getApplicationContext(),
+                    SQLHelper.queryAllMessage(getApplicationContext(), tableNum));
+            newExercisingListView.setAdapter(mNewExercisingListViewAdapter);
+            setListViewHeightBasedOnChildren(newExercisingListView);
+        }
+        titleNameEt.setText(customizeName);
     }
 
     private void changeNum() {
@@ -179,10 +194,18 @@ public class NewExercisingActivity extends BaseActivity {
         getWindow().setStatusBarColor(settingsSp.getInt(Utils.COLOR_BACKGROUND_DEEP, colorBbackgroundDeep[0]));
     }
 
-    @OnClick(R.id.new_exercising_cancel)
+    @OnClick({R.id.new_exercising_cancel, R.id.new_exercising_save})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.new_exercising_cancel:
+            case R.id.new_exercising_cancel:// 点击cancel不保存退出
+                finish();
+                break;
+            case R.id.new_exercising_save:
+                if(tableNum == 0) {
+                    SQLHelper.insertCustomizeSqlite(getApplicationContext(), titleNameEt.getText().toString(), "~2分钟");
+                }else{
+                    SQLHelper.updateCustomDate(getApplicationContext(),""+tableNum,titleNameEt.getText().toString(), "~2分钟");
+                }
                 finish();
                 break;
         }
@@ -196,37 +219,21 @@ public class NewExercisingActivity extends BaseActivity {
     public void setListViewHeightBasedOnChildren(ListView listView) {
 
         // 获取ListView对应的Adapter
-
         ListAdapter listAdapter = listView.getAdapter();
-
         if (listAdapter == null) {
-
             return;
-
         }
-
         int totalHeight = 0;
-
         for (int i = 0; i < listAdapter.getCount(); i++) { // listAdapter.getCount()返回数据项的数目
-
             View listItem = listAdapter.getView(i, null, listView);
-
             listItem.measure(0, 0); // 计算子项View 的宽高
-
             totalHeight += listItem.getMeasuredHeight(); // 统计所有子项的总高度
-
         }
-
         ViewGroup.LayoutParams params = listView.getLayoutParams();
-
         params.height = totalHeight
                 + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-
         // listView.getDividerHeight()获取子项间分隔符占用的高度
-
         // params.height最后得到整个ListView完整显示需要的高度
-
         listView.setLayoutParams(params);
-
     }
 }
