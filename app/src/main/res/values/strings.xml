@@ -32,4 +32,7 @@
     <string name="exercise_info">选择一项练习将其添加到锻炼中。</string>
     <string name="exercise_info_two">拖动可重新排序，滑动可删除。</string>
     <string name="delete_info">滑动可删除。</string>
+    <string name="dialog_delete">删除</string>
+    <string name="dialog_delete_info">是否确认删除?</string>
+    <string name="ok">确定</string>
 </resources>

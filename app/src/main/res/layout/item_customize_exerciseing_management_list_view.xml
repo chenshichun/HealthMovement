@@ -7,11 +7,10 @@
     <TextView
         android:id="@+id/customize_exerciseing_name"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:text="ss"
         android:textColor="@color/write"
         android:textSize="14sp" />
 
