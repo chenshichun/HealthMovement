@@ -3,11 +3,10 @@ package movement.health.csc.healthmovement.activity;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,10 +22,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,7 +85,7 @@ public class NewExercisingActivity extends BaseActivity {
         getCustomizeData();
         String[] customizeFrom = {"customize_num_text", "customize_item_text"};
         int[] customizeTo = {R.id.item_num, R.id.item_text};
-        customizeAdapter = new SimpleAdapter(this, customizeList, R.layout.customize_gridview_item, customizeFrom, customizeTo);
+        customizeAdapter = new SimpleAdapter(this, customizeList, R.layout.item_customize_gridview, customizeFrom, customizeTo);
         customizeGridView.setAdapter(customizeAdapter);
 
         TypedArray array = getResources().obtainTypedArray(R.array.exercising_pic);
@@ -114,8 +111,8 @@ public class NewExercisingActivity extends BaseActivity {
             }
         });
 
+        titleNameEt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)});
         changeNum();
-
         titleNameEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

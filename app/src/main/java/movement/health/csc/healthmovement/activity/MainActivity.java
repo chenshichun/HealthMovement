@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity {
     private ArrayList<View> pageview;
     private SharedPreferences settingsSp;
     View startExerciseView, customizeExercisingView;
-    LinearLayout repidExercisingLl,everyDayExercisingEl,difficultExercisingLl,penitenceExercisingLl;
+    LinearLayout repidExercisingLl, everyDayExercisingEl, difficultExercisingLl, penitenceExercisingLl;
     LinearLayout newExercisingLl;
     private ListView mCustomizeExerciseingListView;
     private ViewPageCustomizeExercisingListViewAdapter mViewPageCustomizeExercisingListViewAdapter;
@@ -147,7 +148,7 @@ public class MainActivity extends BaseActivity {
 
         LayoutInflater inflater = getLayoutInflater();
         customizeExercisingView = inflater.inflate(R.layout.viewpage_customize_exercising, null);
-        mCustomizeExerciseingListView = ButterKnife.findById(customizeExercisingView,R.id.customize_exerciseing_list_view);
+        mCustomizeExerciseingListView = ButterKnife.findById(customizeExercisingView, R.id.customize_exerciseing_list_view);
         View view = LayoutInflater.from(this).inflate(R.layout.viewpage_customize_exercising_foot_view, null);
         mCustomizeExerciseingListView.addFooterView(view);
         mCustomizeExerciseingListView.setAdapter(mViewPageCustomizeExercisingListViewAdapter);
@@ -155,29 +156,27 @@ public class MainActivity extends BaseActivity {
         mCustomizeExerciseingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(DEBUG) Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" ::::::mCustomizeExerciseingListView.getCount():::"+mCustomizeExerciseingListView.getCount());
-                if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::position::::::"+position);
                 TextView itemName = (TextView) view.findViewById(R.id.item_name);
-                Bundle bundle=new Bundle();
-                bundle.putInt("sql_position",position+1);
-                bundle.putInt("list_view_count",mCustomizeExerciseingListView.getCount()-1);
-                bundle.putString("item_name",itemName.getText().toString());
+                Bundle bundle = new Bundle();
+                bundle.putInt("sql_position", position + 1);
+                bundle.putInt("list_view_count", mCustomizeExerciseingListView.getCount() - 1);
+                bundle.putString("item_name", itemName.getText().toString());
                 startActivity(NewExercisingActivity.class, bundle);
             }
         });
 
-        newExercisingLl = ButterKnife.findById(view,R.id.new_exercising_ll);
+        newExercisingLl = ButterKnife.findById(view, R.id.new_exercising_ll);
         newExercisingLl.setOnClickListener(this);
 
         startExerciseView = inflater.inflate(R.layout.viewpage_start_exercising, null);
-        repidExercisingLl = ButterKnife.findById(startExerciseView,R.id.repid_exercising_ll);
+        repidExercisingLl = ButterKnife.findById(startExerciseView, R.id.repid_exercising_ll);
 
         repidExercisingLl.setOnClickListener(this);
-        everyDayExercisingEl = ButterKnife.findById(startExerciseView,R.id.every_day_exercising_ll);
+        everyDayExercisingEl = ButterKnife.findById(startExerciseView, R.id.every_day_exercising_ll);
         everyDayExercisingEl.setOnClickListener(this);
-        difficultExercisingLl = ButterKnife.findById(startExerciseView,R.id.difficult_exercising_ll);
+        difficultExercisingLl = ButterKnife.findById(startExerciseView, R.id.difficult_exercising_ll);
         difficultExercisingLl.setOnClickListener(this);
-        penitenceExercisingLl = ButterKnife.findById(startExerciseView,R.id.penitence_exercising_ll);
+        penitenceExercisingLl = ButterKnife.findById(startExerciseView, R.id.penitence_exercising_ll);
         penitenceExercisingLl.setOnClickListener(this);
     }
 
@@ -197,7 +196,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick({R.id.main_header_rl, R.id.viewpage_title, R.id.viewpager, R.id.start_exercisePoint, R.id.customize_exercisePoint,
-            R.id.remind_text, R.id.setting_btn, R.id.choose_practiceIb, R.id.main_bottomRl, R.id.main_rl })
+            R.id.remind_text, R.id.setting_btn, R.id.choose_practiceIb, R.id.main_bottomRl, R.id.main_rl})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_header_rl:
@@ -216,7 +215,11 @@ public class MainActivity extends BaseActivity {
                 startActivity(SettingActivity.class, null);
                 break;
             case R.id.choose_practiceIb:
-                startActivity(ChoosePracticeActivity.class, null);
+                if (mCustomizeExerciseingListView.getCount() == 0) {
+                    startActivity(ChoosePracticeActivity.class, null);
+                } else {
+                    startActivity(CustomExercisingManagementActivity.class, null);
+                }
                 break;
             case R.id.main_bottomRl:
                 break;
@@ -229,12 +232,13 @@ public class MainActivity extends BaseActivity {
                 startActivity(StartExercisingActivity.class, null);
                 break;
             case R.id.new_exercising_ll:
-                Bundle bundle=new Bundle();
-                bundle.putInt("sql_position",0);
-                bundle.putInt("list_view_count",mCustomizeExerciseingListView.getCount());
-                bundle.putString("item_name",getResources().getString(R.string.customize_exerc)+mCustomizeExerciseingListView.getCount());
+                Bundle bundle = new Bundle();
+                bundle.putInt("sql_position", 0);
+                bundle.putInt("list_view_count", mCustomizeExerciseingListView.getCount());
+                bundle.putString("item_name", getResources().getString(R.string.customize_exerc) + mCustomizeExerciseingListView.getCount());
                 startActivity(NewExercisingActivity.class, bundle);
-                if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::::::mCustomizeExerciseingListView.getCount()::"+mCustomizeExerciseingListView.getCount());
+                if (DEBUG)
+                    Log.d("chenshichun", " " + this.getClass().getCanonicalName() + " :::::::mCustomizeExerciseingListView.getCount()::" + mCustomizeExerciseingListView.getCount());
                 break;
         }
     }
@@ -242,5 +246,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (DEBUG)
+            Log.d("chenshichun", " " + this.getClass().getCanonicalName() + " :::::keyCode::::" + keyCode);
+        return super.onKeyDown(keyCode, event);
     }
 }

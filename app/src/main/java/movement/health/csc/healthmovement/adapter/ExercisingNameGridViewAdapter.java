@@ -2,7 +2,6 @@ package movement.health.csc.healthmovement.adapter;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +49,7 @@ public class ExercisingNameGridViewAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext.getApplicationContext()).inflate(R.layout.exercising_name_gridview_item, null);
+            convertView = LayoutInflater.from(mContext.getApplicationContext()).inflate(R.layout.item_exercising_name_gridview, null);
             viewHolder.itemIv = (ImageView) convertView.findViewById(R.id.item_iv);
             viewHolder.itemName = (TextView) convertView.findViewById(R.id.item_name);
             convertView.setTag(viewHolder);

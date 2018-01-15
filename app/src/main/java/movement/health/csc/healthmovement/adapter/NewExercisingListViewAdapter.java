@@ -2,7 +2,6 @@ package movement.health.csc.healthmovement.adapter;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +57,7 @@ public class NewExercisingListViewAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.new_exercising_list_view_item, null);
+            convertView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.item_new_exercising_list_view, null);
             viewHolder.itemNum = (TextView) convertView.findViewById(R.id.list_num);
             viewHolder.itemPic = (ImageView) convertView.findViewById(R.id.list_pic);
             viewHolder.itemName = (TextView) convertView.findViewById(R.id.list_name);

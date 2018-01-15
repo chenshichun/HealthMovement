@@ -43,7 +43,6 @@ public class SettingActivity extends BaseActivity {
     @BindView(R.id.activity_setting_ll)
     LinearLayout activitySettingLl;
     private SharedPreferences settingsSp;
-    private ImageButton mCancelIb;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
