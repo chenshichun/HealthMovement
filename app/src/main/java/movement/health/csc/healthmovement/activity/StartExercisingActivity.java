@@ -8,6 +8,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -65,6 +66,9 @@ public class StartExercisingActivity extends BaseActivity {
     RelativeLayout mRoot;
     @BindView(R.id.chronometer)
     Chronometer chronometer;
+    @BindView(R.id.transparent_view)
+    View mTransparentView;
+
     private SharedPreferences settingsSp;
     private int currentButtonProgress, currentProgress;
     private boolean isStartCountdown = false;
@@ -110,7 +114,9 @@ public class StartExercisingActivity extends BaseActivity {
         });
 
         mAdapter = new SampleAdapter();
+        mAdapter.setSelectItem(0);
         ecoGallery.setAdapter(mAdapter);
+        if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::::::mAdapter::");
         ecoGallery.setOnItemClickListener(new EcoGalleryAdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(EcoGalleryAdapterView<?> parent, View view, int position, long id) {
@@ -203,6 +209,7 @@ public class StartExercisingActivity extends BaseActivity {
                                     public void run() {
                                         countdownNum.setVisibility(View.GONE);
                                         ecoGallery.setVisibility(View.VISIBLE);
+                                        mTransparentView.setVisibility(View.VISIBLE);
                                         onRecordStart();
                                     }
                                 }, 300);
@@ -231,13 +238,26 @@ public class StartExercisingActivity extends BaseActivity {
         }
     };
 
-    @OnClick(R.id.ic_cancel_ib)
-    public void onClick() {
-        finish();
+    @OnClick({R.id.ic_cancel_ib,R.id.transparent_view})
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.ic_cancel_ib:
+                finish();
+                break;
+            case R.id.transparent_view:
+                if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::::::transparent_view::");
+                ecoGallery.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, null);
+                if(ecoGallery.getSelectedItemPosition()<mAdapter.getCount()-1)
+                mAdapter.setSelectItem(ecoGallery.getSelectedItemPosition()+1);
+                mAdapter.notifyDataSetChanged();
+                break;
+        }
     }
 
 
     public class SampleAdapter extends BaseAdapter {
+
+        private int selectItem;
 
         public SampleAdapter() {
             super();
@@ -258,6 +278,10 @@ public class StartExercisingActivity extends BaseActivity {
             return position;
         }
 
+        public void setSelectItem(int selectItem) {
+            this.selectItem = selectItem;
+        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
@@ -267,9 +291,19 @@ public class StartExercisingActivity extends BaseActivity {
             ImageView iv = (ImageView) convertView.findViewById(R.id.sports_iv);
             CircleProgressView mCircleProgressView = (CircleProgressView) convertView.findViewById(R.id.item_circle_progress_view);
             mCircleProgressView.setProgressBottomColor(Color.rgb(0x3f, 0x3e, 0x3f));
-            mCircleProgressView.setProgressBottom(100);
-            int resid = getResources().getIdentifier("kung_fu" + position % 10 + "_normal", "drawable",
+            int resid = getResources().getIdentifier("kung_fu_" + position % 10, "drawable",
                     parent.getContext().getPackageName());
+            if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" ::::selectItem:::::"+selectItem + "  position:: "+position);
+            if(selectItem == position){
+                if(DEBUG)Log.d("chenshichun"," "+this.getClass().getCanonicalName()+" :::::positionposition::::"+position);
+                iv.setPressed(true);
+                iv.setBackgroundResource(R.drawable.kung_fu_bg);
+                mCircleProgressView.setProgressColor(Color.rgb(0xff, 0xff, 0xff));
+                mCircleProgressView.setmShowProgress(0,360,false);
+            }else{
+                iv.setPressed(false);
+                iv.setBackground(null);
+            }
             iv.setImageResource(resid);
             return convertView;
         }

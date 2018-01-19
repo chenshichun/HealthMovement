@@ -69,6 +69,8 @@ public class NewExercisingActivity extends BaseActivity {
     private NewExercisingListViewAdapter mNewExercisingListViewAdapter;
     private int tableNum, listCount;
     private String customizeName;
+    private List<Map<String, String>> tempList;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,7 @@ public class NewExercisingActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        tempList = new ArrayList<Map<String, String>>();
         numText = getResources().getStringArray(R.array.num_text);
         itemText = getResources().getStringArray(R.array.practice_difficulty);
         customizeList = new ArrayList<Map<String, Object>>();
@@ -103,15 +106,19 @@ public class NewExercisingActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                SQLHelper.insertSqlite(getApplicationContext(), position, 5, listCount);
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put(Utils.MAP_PIC_NAME, "" + position);
+                map.put(Utils.MAP_EXERCISEING_NUM, "" + listCount);
+                tempList.add(map);
+
                 mNewExercisingListViewAdapter = new NewExercisingListViewAdapter(getApplicationContext(),
-                        SQLHelper.queryAllMessage(getApplicationContext(), listCount));
+                        tempList);
                 newExercisingListView.setAdapter(mNewExercisingListViewAdapter);
                 setListViewHeightBasedOnChildren(newExercisingListView);
             }
         });
 
-        titleNameEt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)});
+        titleNameEt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)}); // 限制字数在16位以下
         changeNum();
         titleNameEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -198,10 +205,16 @@ public class NewExercisingActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.new_exercising_save:
-                if(tableNum == 0) {
+
+                for (int i = 0;i<tempList.size();i++){
+                    SQLHelper.insertSqlite(getApplicationContext(), Integer.parseInt(tempList.get(i).get(Utils.MAP_PIC_NAME)), 5, listCount);
+                }
+                //
+
+                if (tableNum == 0) {
                     SQLHelper.insertCustomizeSqlite(getApplicationContext(), titleNameEt.getText().toString(), "~2分钟");
-                }else{
-                    SQLHelper.updateCustomDate(getApplicationContext(),""+tableNum,titleNameEt.getText().toString(), "~2分钟");
+                } else {
+                    SQLHelper.updateCustomDate(getApplicationContext(), "" + tableNum, titleNameEt.getText().toString(), "~2分钟");
                 }
                 finish();
                 break;

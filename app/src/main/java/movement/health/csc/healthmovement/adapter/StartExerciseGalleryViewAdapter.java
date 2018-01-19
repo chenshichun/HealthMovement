@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +37,13 @@ public class StartExerciseGalleryViewAdapter extends BaseAdapter {
     public List<Map<String, Object>> list;
     private int selectItem;
 
-    public Integer[] imgs = {R.drawable.kung_fu0_normal, R.drawable.kung_fu1_normal,
+    public Integer[] imgs = {R.drawable.kung_fu_0, R.drawable.kung_fu_1,
+            R.drawable.kung_fu_2, R.drawable.kung_fu_3, R.drawable.kung_fu_4,
+            R.drawable.kung_fu_5, R.drawable.kung_fu_6};
+
+    public Integer[] imgs1 = {R.drawable.kung_fu0_normal, R.drawable.kung_fu1_normal,
             R.drawable.kung_fu2_normal, R.drawable.kung_fu3_normal, R.drawable.kung_fu4_normal,
             R.drawable.kung_fu5_normal, R.drawable.kung_fu6_normal};
-    public String[] titles = {"美图01", "美图02", "美图03", "美图04", "美图05", "美图06",
-            "美图07"};
-
     public StartExerciseGalleryViewAdapter(Context c) {
         this.mContext = c;
         list = new ArrayList<Map<String, Object>>();
@@ -147,13 +149,15 @@ public class StartExerciseGalleryViewAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.sportImageView.setBackgroundResource(imgs[position]);
+        viewHolder.sportImageView.setImageResource(imgs[position]);
+        viewHolder.sportImageView.setBackgroundResource(R.drawable.kung_fu_bg);
         viewHolder.mCircleProgressView.setProgressBottomColor(Color.rgb(0x3f, 0x3e, 0x3f));
         viewHolder.mCircleProgressView.setProgressBottom(100);
-
         if(selectItem==position){
             viewHolder.sportImageView.setScaleX(2.5f);
             viewHolder.sportImageView.setScaleY(2.5f);
+            viewHolder.sportImageView.setPressed(true);
+
         }else{
             viewHolder.sportImageView.setScaleX(1.0f);
             viewHolder.sportImageView.setScaleY(1.0f);

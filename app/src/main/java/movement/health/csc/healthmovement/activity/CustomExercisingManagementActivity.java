@@ -99,7 +99,6 @@ public class CustomExercisingManagementActivity extends BaseActivity {
         mCustomizeExerciseingManagementListView.setBackgroundColor(settingsSp.getInt(Utils.COLOR_BACKGROUND_DEEP, colorBbackgroundDeep[0]));
     }
 
-
     @OnClick({R.id.ic_cancel_ib, R.id.ic_add_ib})
     public void onClick(View v) {
         switch (v.getId()) {

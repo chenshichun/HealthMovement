@@ -156,12 +156,6 @@ public class MainActivity extends BaseActivity {
         mCustomizeExerciseingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            /*    TextView itemName = (TextView) view.findViewById(R.id.item_name);
-                Bundle bundle = new Bundle();
-                bundle.putInt("sql_position", position + 1);
-                bundle.putInt("list_view_count", mCustomizeExerciseingListView.getCount() - 1);
-                bundle.putString("item_name", itemName.getText().toString());
-                startActivity(NewExercisingActivity.class, bundle);*/
                 startActivity(StartExercisingActivity.class, null);
             }
         });
@@ -216,7 +210,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(SettingActivity.class, null);
                 break;
             case R.id.choose_practiceIb:
-                if (mCustomizeExerciseingListView.getCount() == 0) {
+                if (mCustomizeExerciseingListView.getCount() == 1) {
                     startActivity(ChoosePracticeActivity.class, null);
                 } else {
                     startActivity(CustomExercisingManagementActivity.class, null);

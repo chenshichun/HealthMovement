@@ -33,6 +33,8 @@ public class SQLHelper {
 
     /**
      * 插入数据
+     *
+     * num: 锻炼数字
      */
     public static void insertSqlite(Context context, int picName, int num, int table_num) {
         ContentValues values = new ContentValues();
@@ -114,8 +116,9 @@ public class SQLHelper {
                     HashMap<String, String> map = new HashMap<String, String>();
                     map.put(Utils.MAP_ID, _id);
                     map.put(Utils.MAP_PIC_NAME, pic_name);
-                    tempList.add(map);
                     map.put(Utils.MAP_EXERCISEING_NUM, exerciseing_num);
+                    tempList.add(map);
+
                 }
             }
             db.close();

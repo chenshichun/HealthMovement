@@ -51,8 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/h_write"
-                ></Chronometer>
+                android:textColor="@color/h_write"></Chronometer>
         </LinearLayout>
     </RelativeLayout>
 
@@ -86,14 +85,28 @@
         android:unselectedAlpha="1.2"
         android:visibility="gone" />
 
-    <movement.health.csc.healthmovement.view.EcoGallery
-        android:id="@+id/eco_gallery"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/eco_gallery_height"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        app:selectedScale="1.5"
-        app:unselectedAlpha="0.2" />
+        >
+        <movement.health.csc.healthmovement.view.EcoGallery
+            android:id="@+id/eco_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:selectedScale="1.5"
+            app:unselectedAlpha="0.2" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/transparent_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/eco_gallery_height"
+        android:layout_centerInParent="true"
+        android:background="@android:color/transparent"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/start_exercise_bottom_rl"
