@@ -50,6 +50,8 @@ public class MainActivity extends BaseActivity {
     RelativeLayout mainBottomRl;
     @BindView(R.id.main_rl)
     RelativeLayout mainRl;
+    @BindView(R.id.go_calendar)
+    ImageButton calendarButton;
 
     private ArrayList<View> pageview;
     private SharedPreferences settingsSp;
@@ -68,7 +70,6 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         initData();
-
     }
 
     //数据适配器
@@ -191,7 +192,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick({R.id.main_header_rl, R.id.viewpage_title, R.id.viewpager, R.id.start_exercisePoint, R.id.customize_exercisePoint,
-            R.id.remind_text, R.id.setting_btn, R.id.choose_practiceIb, R.id.main_bottomRl, R.id.main_rl})
+            R.id.remind_text, R.id.setting_btn, R.id.choose_practiceIb, R.id.main_bottomRl, R.id.main_rl ,R.id.go_calendar})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_header_rl:
@@ -234,6 +235,9 @@ public class MainActivity extends BaseActivity {
                 startActivity(NewExercisingActivity.class, bundle);
                 if (DEBUG)
                     Log.d("chenshichun", " " + this.getClass().getCanonicalName() + " :::::::mCustomizeExerciseingListView.getCount()::" + mCustomizeExerciseingListView.getCount());
+                break;
+            case R.id.go_calendar:
+                startActivity(CalendarActivity.class, null);
                 break;
         }
     }

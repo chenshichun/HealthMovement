@@ -22,6 +22,7 @@
         <activity android:name=".activity.StartExercisingActivity"></activity>
         <activity android:name=".activity.NewExercisingActivity"></activity>
         <activity android:name=".activity.CustomExercisingManagementActivity"></activity>
+        <activity android:name=".activity.CalendarActivity"></activity>
     </application>
 
 </manifest>
