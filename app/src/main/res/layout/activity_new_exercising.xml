@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/new_exercising_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/new_exercising_ll"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/new_exercising_ll_height"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -53,11 +53,11 @@
         <ScrollView
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -95,7 +95,7 @@
                 <ListView
                     android:id="@+id/new_exercising_list_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     ></ListView>
 
@@ -106,6 +106,13 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/exercise_info"
                     android:textColor="@color/write" />
+
+                <!--不加这个view会导致ListView行数多的时候上面的TextView看不到，而且高度不能太小，原因不清-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    />
             </LinearLayout>
         </ScrollView>
 

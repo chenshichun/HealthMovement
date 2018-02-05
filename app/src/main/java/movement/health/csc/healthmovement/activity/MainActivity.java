@@ -232,7 +232,7 @@ public class MainActivity extends BaseActivity {
                 bundle.putInt("sql_position", 0);
                 bundle.putInt("list_view_count", mCustomizeExerciseingListView.getCount());
                 bundle.putString("item_name", getResources().getString(R.string.customize_exerc) + mCustomizeExerciseingListView.getCount());
-                startActivity(NewExercisingActivity.class, bundle);
+                startActivity(NewExercisingTestActivity.class, bundle);
                 if (DEBUG)
                     Log.d("chenshichun", " " + this.getClass().getCanonicalName() + " :::::::mCustomizeExerciseingListView.getCount()::" + mCustomizeExerciseingListView.getCount());
                 break;

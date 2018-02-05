@@ -40,7 +40,7 @@ import movement.health.csc.healthmovement.utils.Utils;
 
 public class NewExercisingActivity extends BaseActivity {
     @BindView(R.id.new_exercising_ll)
-    LinearLayout newExercisingLl;
+    RelativeLayout newExercisingLl;
     @BindView(R.id.new_exercising_main_header_rl)
     RelativeLayout mainHeaderRl;
     @BindView(R.id.new_exercising_cancel)
