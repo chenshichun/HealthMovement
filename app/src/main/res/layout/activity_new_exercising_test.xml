@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/new_exercising_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/new_exercising_main_header_rl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/new_exercising_main_header_rl_height">
+
+            <TextView
+                android:id="@+id/new_exercising_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/new_exercising_cancel_padding_left_or_right"
+                android:text="@string/cancel"
+                android:textColor="@color/write"
+                android:textSize="@dimen/new_exercising_cancel_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/new_exercising"
+                android:textColor="@color/write"
+                android:textSize="@dimen/title_text_size" />
+
+            <TextView
+                android:id="@+id/new_exercising_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/new_exercising_cancel_padding_left_or_right"
+                android:text="@string/save"
+                android:textColor="@color/write"
+                android:textSize="@dimen/new_exercising_cancel_text_size" />
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/customize_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="5"></GridView>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/title"
+                    android:textColor="@color/write" />
+
+                <EditText
+                    android:id="@+id/title_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/edit_text_hint"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/write" />
+
+                <TextView
+                    android:id="@+id/word_count_limit_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/write" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/exercise"
+                    android:textColor="@color/write" />
+                 <TextView
+                        android:id="@+id/edit_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/edit"
+                        android:textColor="@color/write" />
+                </RelativeLayout>
+
+                <movement.health.csc.healthmovement.view.EditRecyclerView
+                    android:id="@+id/new_exercising_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"></movement.health.csc.healthmovement.view.EditRecyclerView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/exercise_info"
+                    android:textColor="@color/write" />
+
+                <!--不加这个view会导致ListView行数多的时候上面的TextView看不到，而且高度不能太小，原因不清-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@null" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Gallery
+        android:id="@+id/exercising_name_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="-190dp"></Gallery>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="101dp"
+        android:background="@color/h_black" />
+</RelativeLayout>
